@@ -1,0 +1,14 @@
+{
+  "name": "px-treasury-incoming-fee-splitter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Educational lab: fee split with bps that must sum to 10000",
+  "scripts": {
+    "test": "node --experimental-strip-types --test invariants/*.test.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}
