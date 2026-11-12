@@ -9,7 +9,7 @@
 
 **Real code:** `npm test` (unit + **sequential composition**). This repo has **no** wasm.
 
-**Production mirror (C++):** [wax-contract-compiler `pxsplit`](https://github.com/pixel-journey/wax-contract-compiler/tree/main/contracts/pxsplit) — [compile run 27](https://github.com/pixel-journey/wax-contract-compiler/actions/runs/43212751217) (verify conclusion before treating as green). Does **not** transfer tokens. **Not deployed.**
+**Production mirror (C++ → wasm):** [wax-contract-compiler `pxsplit`](https://github.com/pixel-journey/wax-contract-compiler/tree/main/contracts/pxsplit) — [run 27](https://github.com/pixel-journey/wax-contract-compiler/actions/runs/43212751217) success. WASM SHA256 `a76fc2f8a93ff5e92f907ca04016df2a2c11eae049b62a1463236e217c345dc9`. Audit **0 errors** / 1 warning. Does **not** transfer tokens. **Not deployed.**
 
 Network docs: [docs.wax.io](https://docs.wax.io/). Token shape reference: [eosio.token](https://github.com/eosio/eosio.contracts). Shared bps helper: [px-invariant-kit](https://github.com/pixel-journey/px-invariant-kit).
 
