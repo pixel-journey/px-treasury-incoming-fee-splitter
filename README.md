@@ -7,7 +7,9 @@
 
 **One-sentence goal:** Teach a fee-split config that is refused unless the legs sum to **exactly 10000** basis points, and an allocation that still sums to the input after floors.
 
-**Real code:** `npm test` (unit + **sequential composition**). **Not** a treasury contract, **not** an `on_notify` handler, **not** wasm.
+**Real code:** `npm test` (unit + **sequential composition**). This repo has **no** wasm.
+
+**Production mirror (C++):** [wax-contract-compiler `pxsplit`](https://github.com/pixel-journey/wax-contract-compiler/tree/main/contracts/pxsplit) — [compile run 27](https://github.com/pixel-journey/wax-contract-compiler/actions/runs/43212751217) (verify conclusion before treating as green). Does **not** transfer tokens. **Not deployed.**
 
 Network docs: [docs.wax.io](https://docs.wax.io/). Token shape reference: [eosio.token](https://github.com/eosio/eosio.contracts). Shared bps helper: [px-invariant-kit](https://github.com/pixel-journey/px-invariant-kit).
 
@@ -30,8 +32,9 @@ Config symbol `WAX`, legs 7000 / 2000 / 1000.
 ## Live path, not shipped
 
 ```
-assertConfig + allocate + acceptTransfer   [tested]
-    → on_notify / token precision / admin setconfig   [not in this repo]
+assertConfig + allocate + acceptTransfer   [tested TS]
+setconfig + preview                        [C++ mirror; no token move]
+    → on_notify / token precision          [not shipped]
 ```
 
 ## Related
