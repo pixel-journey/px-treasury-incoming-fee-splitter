@@ -1,19 +1,18 @@
-# Split only when the basis points add to 10000
+# Fee split that must sum to 10000 bps
 
-> **Trust:** private educational lab (Tier B)  
 > **Domain:** treasury fee splitter  
 > **Sources:** [SOURCES.md](SOURCES.md)  
-> **Vault:** [px-contract-examples-vault](https://github.com/pixel-journey/px-contract-examples-vault)
+> **Catalog:** [px-contract-examples-vault](https://github.com/pixel-journey/px-contract-examples-vault)
 
-**One-sentence goal:** Teach a fee-split config that is refused unless the legs sum to **exactly 10000** basis points, and an allocation that still sums to the input after floors.
+**Goal:** A fee-split configuration is refused unless the legs sum to **exactly 10000** basis points. Allocation still sums to the input after per-leg floors (remainder on the last leg).
 
-**Real code:** `npm test` (unit + **sequential composition**). This repo has **no** wasm.
+**Code under test:** `npm test` (unit + sequential composition).
 
-**Production mirror (C++ → wasm):** [wax-contract-compiler `pxsplit`](https://github.com/pixel-journey/wax-contract-compiler/tree/main/contracts/pxsplit) — [run 27](https://github.com/pixel-journey/wax-contract-compiler/actions/runs/43212751217) success. WASM SHA256 `a76fc2f8a93ff5e92f907ca04016df2a2c11eae049b62a1463236e217c345dc9`. Audit **0 errors** / 1 warning. Does **not** transfer tokens. **Not deployed.**
+**Production mirror (C++ → wasm):** [wax-contract-compiler `pxsplit`](https://github.com/pixel-journey/wax-contract-compiler/tree/main/contracts/pxsplit) — [run 27](https://github.com/pixel-journey/wax-contract-compiler/actions/runs/43212751217). WASM SHA256 `a76fc2f8a93ff5e92f907ca04016df2a2c11eae049b62a1463236e217c345dc9`. Audit 0 errors / 1 warning. The mirror validates config and previews allocation; it does **not** transfer tokens and is **not deployed**.
 
-Network docs: [docs.wax.io](https://docs.wax.io/). Token shape reference: [eosio.token](https://github.com/eosio/eosio.contracts). Shared bps helper: [px-invariant-kit](https://github.com/pixel-journey/px-invariant-kit).
+**Network docs:** [docs.wax.io](https://docs.wax.io/). **Token shape:** [eosio.token](https://github.com/eosio/eosio.contracts). **Shared bps helper:** [px-invariant-kit](https://github.com/pixel-journey/px-invariant-kit).
 
-## Composition note
+## Composition
 
 `split.composition.test.ts` runs a fee desk: several intakes accumulate per leg, and `sum(leg balances) === total accepted`. Wrong symbol and zero amount leave balances unchanged. Dust (`1n`) still lands on the last leg so conservation holds.
 
@@ -29,7 +28,7 @@ Config symbol `WAX`, legs 7000 / 2000 / 1000.
 | Wrong symbol / zero amount on accept | refused; desk unchanged |
 | Sequential intakes | balances sum to total in |
 
-## Live path, not shipped
+## Layered path
 
 ```
 assertConfig + allocate + acceptTransfer   [tested TS]
@@ -41,8 +40,6 @@ setconfig + preview                        [C++ mirror; no token move]
 
 - [px-treasury-linear-cliff-vesting](https://github.com/pixel-journey/px-treasury-linear-cliff-vesting)
 - [px-token-dust-truncation-visualizer](https://github.com/pixel-journey/px-token-dust-truncation-visualizer)
-
-## Run
 
 ```bash
 npm test
