@@ -12,6 +12,16 @@
 
 **Network docs:** [docs.wax.io](https://docs.wax.io/). **Token shape:** [eosio.token](https://github.com/eosio/eosio.contracts). **Shared bps helper:** [px-invariant-kit](https://github.com/pixel-journey/px-invariant-kit).
 
+## Learning materials
+
+| Doc | Role |
+| --- | --- |
+| [EDUCATION.md](EDUCATION.md) | Beginner → masterclass |
+| [WORKED-EXAMPLES.md](WORKED-EXAMPLES.md) | Exact splits, dust-to-last-leg, sequential desk |
+| [TIPS.md](TIPS.md) | Config design, 128-bit multiply, notify hygiene |
+| [SECURITY.md](SECURITY.md) | Config and allocation attacks |
+| [SOURCES.md](SOURCES.md) | Official docs + production mirror |
+
 ## Composition
 
 `split.composition.test.ts` runs a fee desk: several intakes accumulate per leg, and `sum(leg balances) === total accepted`. Wrong symbol and zero amount leave balances unchanged. Dust (`1n`) still lands on the last leg so conservation holds.
