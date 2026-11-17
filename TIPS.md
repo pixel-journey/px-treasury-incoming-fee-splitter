@@ -1,37 +1,41 @@
-# Tips — fee splitters on Antelope / WAX
+# Tips — incoming fee splitter
 
 ## Config design
 
-- Always require **Σ bps = 10000**. Never “fix” a missing remainder into the contract’s own balance without an explicit leg.
-- Put the **dust-favored** destination **last**, and document that in the setconfig memo or multisig description.
-- Cap the number of legs (this lab: 8) so RAM and loop cost stay bounded.
-- Refuse duplicate `to` so a “max 30% to X” policy cannot be bypassed with two rows.
+- Always require **Σ bps = 10000**. Never "keep" a missing remainder in the contract without an explicit leg.  
+- Put the **dust-favored** destination **last**, and document that in the setconfig / msig description.  
+- Cap legs (this lab: 8) for RAM and loop cost.  
+- Refuse duplicate `to` so a "max 30% to X" policy cannot be bypassed with two rows.  
+- Refuse 0 bps placeholder legs.
 
 ## Integer math
 
-- Use **128-bit** (or `bigint` off-chain) for `amount * bps` before `/ 10000`.
-- Last-leg remainder is mandatory if you floor early legs; otherwise units vanish.
-- Dust visualizer: [px-token-dust-truncation-visualizer](https://github.com/pixel-journey/px-token-dust-truncation-visualizer).
+- Use **128-bit** (or `bigint` off-chain) for `amount * bps` before `/ 10000`.  
+- Last-leg remainder is mandatory if you floor early legs.  
+- Dust neighbor: [px-token-dust-truncation-visualizer](https://github.com/pixel-journey/px-token-dust-truncation-visualizer).
 
-## Notification hygiene
+## Notification hygiene (production)
 
-- Gate on `get_first_receiver()` = your token contract.
-- Ignore `from == get_self()`.
-- Check **symbol code and precision**, not only a letter string.
-- Do not let the transfer **memo** choose destinations.
+- Gate on `get_first_receiver()` = intended token contract.  
+- Ignore `from == get_self()`.  
+- Check symbol **and** precision.  
+- Do not let transfer **memo** choose destinations.
 
-## Related patterns
+## Common mistakes
 
-| Pattern | Repo |
-| --- | --- |
-| Vesting after split | [px-treasury-linear-cliff-vesting](https://github.com/pixel-journey/px-treasury-linear-cliff-vesting) |
-| Tax on transfer | [px-token-transfer-tax-burn-treasury](https://github.com/pixel-journey/px-token-transfer-tax-burn-treasury) |
-| Pause admin mistakes | [px-token-pausable-emergency-guard](https://github.com/pixel-journey/px-token-pausable-emergency-guard) |
-| Shared bps helpers | [px-invariant-kit](https://github.com/pixel-journey/px-invariant-kit) |
+1. Teaching `allocate(100n)` as dust (floors are exact at 70/20/10).  
+2. Allowing 0 bps "placeholder" legs.  
+3. Using uint64 multiply without wide intermediate.  
+4. Treating lab symbol `WAX` as proof of the system token contract account.  
+5. Confusing `allocate(0)` (ok) with `acceptTransfer(..., 0)` (refused).
 
-## Common student mistakes
+## Nice-to-have extensions (not in this repo)
 
-1. Teaching `allocate(100n)` as dust (floors are exact).
-2. Allowing 0 bps “placeholder” legs.
-3. Using `uint64` multiply without wide intermediate.
-4. Treating lab symbol `WAX` as proof of the system token contract account.
+- Per-token multi-config.  
+- Pause that still allows msig recovery ([pausable guard](https://github.com/pixel-journey/px-token-pausable-emergency-guard)).  
+- Vesting after split ([linear cliff](https://github.com/pixel-journey/px-treasury-linear-cliff-vesting)).  
+- Live on_notify integration tests.
+
+## Related
+
+[vesting](https://github.com/pixel-journey/px-treasury-linear-cliff-vesting) · [transfer-tax](https://github.com/pixel-journey/px-token-transfer-tax-burn-treasury) · [invariant-kit bps](https://github.com/pixel-journey/px-invariant-kit)
