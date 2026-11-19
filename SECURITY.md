@@ -22,7 +22,7 @@ Earlier legs floor. Order of legs is a policy, not fairness.
 | Admin | `setconfig` under msig; pause path from [pausable](https://github.com/pixel-journey/px-token-pausable-emergency-guard) |
 | Inline actions | Destination names are constants — never a user-typed action |
 | Auth | String equality in tests is not `require_auth` |
-| Wasm | [pxsplit](https://github.com/pixel-journey/wax-contract-compiler/tree/main/contracts/pxsplit) is accounting only |
+| Wasm | `wax-contract-compiler` (private; not this public course) is accounting only |
 
 Shared checklist: [contract template](https://github.com/pixel-journey/px-antelope-contract-template/blob/main/SECURITY.md).
 
@@ -36,4 +36,4 @@ Shared checklist: [contract template](https://github.com/pixel-journey/px-antelo
 
 ## Honesty limits
 
-No notify, no broadcast, no wasm in this repo. Related: [dust](https://github.com/pixel-journey/px-token-dust-truncation-visualizer) · [wallet tax](https://github.com/pixel-journey/px-token-transfer-tax-burn-treasury) · [treasury path](https://github.com/pixel-journey/px-contract-examples-vault/blob/main/docs/TREASURY-TOKEN-LEARNING-PATH.md).
+No notify, no broadcast, no wasm in this repo. Related: `px-token-dust-truncation-visualizer` (private; not this public course) · [wallet tax](https://github.com/pixel-journey/px-token-transfer-tax-burn-treasury) · `px-contract-examples-vault` (private; not this public course).

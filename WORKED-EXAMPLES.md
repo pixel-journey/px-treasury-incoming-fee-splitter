@@ -67,4 +67,4 @@ on_notify(transfer):
   for each row: transfer token to row.to
 ```
 
-The C++ mirror in [pxsplit](https://github.com/pixel-journey/wax-contract-compiler/tree/main/contracts/pxsplit) validates config and previews allocation only — it does not move tokens.
+The C++ mirror in `wax-contract-compiler` (private; not this public course) validates config and previews allocation only — it does not move tokens.

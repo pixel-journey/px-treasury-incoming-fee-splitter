@@ -2,13 +2,13 @@
 
 > **Domain:** treasury fee splitter  
 > **Sources:** [SOURCES.md](SOURCES.md)  
-> **Catalog:** [px-contract-examples-vault](https://github.com/pixel-journey/px-contract-examples-vault)
+> **Catalog:** `px-contract-examples-vault` (private; not this public course)
 
 **Goal:** A fee-split configuration is refused unless the legs sum to **exactly 10000** basis points. Allocation still sums to the input after per-leg floors (remainder on the last leg).
 
 **Code under test:** `npm test` (unit + sequential composition).
 
-**Production mirror (C++ → wasm):** [wax-contract-compiler `pxsplit`](https://github.com/pixel-journey/wax-contract-compiler/tree/main/contracts/pxsplit) — [run 27](https://github.com/pixel-journey/wax-contract-compiler/actions/runs/43212751217). WASM SHA256 `a76fc2f8a93ff5e92f907ca04016df2a2c11eae049b62a1463236e217c345dc9`. Audit 0 errors / 1 warning. The mirror validates config and previews allocation; it does **not** transfer tokens and is **not deployed**.
+**Build record, not this course:** a private compiler tree `pxsplit` produced wasm SHA256 `a76fc2f8a93ff5e92f907ca04016df2a2c11eae049b62a1463236e217c345dc9`. Audit 0 errors / 1 warning. That tree is not public and is **not deployed**. It does not transfer tokens. The course is the TypeScript under `npm test`.
 
 **Network docs:** [docs.wax.io](https://docs.wax.io/). **Token shape:** [eosio.token](https://github.com/eosio/eosio.contracts). **Shared bps helper:** [px-invariant-kit](https://github.com/pixel-journey/px-invariant-kit).
 
@@ -49,7 +49,7 @@ setconfig + preview                        [C++ mirror; no token move]
 ## Related
 
 - [px-treasury-linear-cliff-vesting](https://github.com/pixel-journey/px-treasury-linear-cliff-vesting)
-- [px-token-dust-truncation-visualizer](https://github.com/pixel-journey/px-token-dust-truncation-visualizer)
+- `px-token-dust-truncation-visualizer` (private; not this public course)
 
 ```bash
 npm test
