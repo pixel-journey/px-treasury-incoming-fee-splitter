@@ -36,4 +36,4 @@ Shared checklist: [contract template](https://github.com/pixel-journey/px-antelo
 
 ## Honesty limits
 
-No notify, no broadcast, no wasm in this repo. Related: `px-token-dust-truncation-visualizer` (private; not this public course) · [wallet tax](https://github.com/pixel-journey/px-token-transfer-tax-burn-treasury) · `px-contract-examples-vault` (private; not this public course).
+No notify, no broadcast, no wasm in this repo. Related: [px-token-dust-truncation-visualizer](https://github.com/pixel-journey/px-token-dust-truncation-visualizer) · [wallet tax](https://github.com/pixel-journey/px-token-transfer-tax-burn-treasury) · `px-contract-examples-vault` (private; not this public course).

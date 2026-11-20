@@ -12,7 +12,7 @@
 
 - Use **128-bit** (or `bigint` off-chain) for `amount * bps` before `/ 10000`.  
 - Last-leg remainder is mandatory if you floor early legs.  
-- Dust neighbor: `px-token-dust-truncation-visualizer` (private; not this public course).
+- Dust neighbor: [px-token-dust-truncation-visualizer](https://github.com/pixel-journey/px-token-dust-truncation-visualizer).
 
 ## Notification hygiene (production)
 

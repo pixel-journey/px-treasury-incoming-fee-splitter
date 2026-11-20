@@ -14,7 +14,7 @@ C++ mirror: `wax-contract-compiler` (private; not this public course) — accoun
 
 | Lab | Topic |
 | --- | --- |
-| `px-token-dust-truncation-visualizer` (private; not this public course) | When a bps fee floors to 0 |
+| [px-token-dust-truncation-visualizer](https://github.com/pixel-journey/px-token-dust-truncation-visualizer) | When a bps fee floors to 0 |
 | [wallet tax](https://github.com/pixel-journey/px-token-transfer-tax-burn-treasury) | Burn share of the tax |
 | [dex tax](https://github.com/pixel-journey/px-token-dex-differentiated-tax) | Pool sees exact qty |
 | [vesting](https://github.com/pixel-journey/px-treasury-linear-cliff-vesting) | Time-gated claims |

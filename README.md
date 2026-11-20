@@ -49,7 +49,7 @@ setconfig + preview                        [C++ mirror; no token move]
 ## Related
 
 - [px-treasury-linear-cliff-vesting](https://github.com/pixel-journey/px-treasury-linear-cliff-vesting)
-- `px-token-dust-truncation-visualizer` (private; not this public course)
+- [px-token-dust-truncation-visualizer](https://github.com/pixel-journey/px-token-dust-truncation-visualizer)
 
 ```bash
 npm test
