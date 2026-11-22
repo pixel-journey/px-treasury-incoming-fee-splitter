@@ -8,6 +8,10 @@
 
 **Product facts locked by tests:** basis points of all legs must sum to **10000**. Earlier legs **floor**. The **last** leg receives the remainder so units are not dropped. Order of legs is a policy, not fairness.
 
+## Portability
+
+Last-leg remainder conservation ports to any Antelope token after symbol and precision change. **PXJ precision is always 8** in this org. The notify account and the token contract are not the same on every chain. A memo is still not authorization.
+
 C++ mirror: `wax-contract-compiler` (private; not this public course) — accounting only, not deployed.
 
 ## Related labs
